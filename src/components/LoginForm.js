@@ -8,25 +8,27 @@ import Col from 'react-bootstrap/Col'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
-import {login} from '../slices/userSlice'
+// import {login} from '../slices/userSlice'
 import {useSelector, useDispatch} from 'react-redux'
 import {useHistory} from 'react-router-dom'
-import {useLayoutEffect} from 'react'
+import {useRef, useEffect} from 'react'
 
 export default function LoginForm() {
     const logged = useSelector(state => state.user.logged)
-    const dispatch = useDispatch()
     const history = useHistory()
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch(login())
-    }
-
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (logged) history.push('/')
     }, [logged, history])
 
+    const emailInput = useRef(null)
+    const passwordInput = useRef(null)
+
+    // const dispatch = useDispatch()
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.dir(emailInput)
+        console.dir(passwordInput)
+    }
     
     return <Container>
         <Row>
@@ -38,11 +40,11 @@ export default function LoginForm() {
                                 <Form onSubmit={handleSubmit}>
                                     <Form.Group controlId="email">
                                         <Form.Label>Email address</Form.Label>
-                                        <Form.Control type="email" placeholder="username@email.com" />
+                                        <Form.Control ref={emailInput} type="email" placeholder="username@email.com" />
                                     </Form.Group>
                                     <Form.Group controlId="password">
                                         <Form.Label>Password</Form.Label>
-                                        <Form.Control type="password" placeholder="Password" />
+                                        <Form.Control ref={passwordInput} type="password" placeholder="Password" />
                                     </Form.Group>
                                     <Button variant="primary" type="submit">
                                         Login
