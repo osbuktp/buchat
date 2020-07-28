@@ -1,0 +1,31 @@
+.layout {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 64px auto 1fr;
+    grid-template-columns: 15rem 1fr 15rem;
+    grid-template-areas:
+        "menu menu menu"
+        "roomlist empty roominfo"
+        "roomlist room roominfo";
+}
+
+.menu, .roomlist, .room, .roominfo {
+    padding: 5px;
+}
+
+.menu {
+    grid-area: menu;
+}
+
+
+.roomlist {
+    grid-area: roomlist;
+}
+
+.room {
+    grid-area: room;
+}
+
+.roominfo {
+    grid-area: roominfo;
+}

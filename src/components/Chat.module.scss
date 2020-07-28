@@ -1,0 +1,12 @@
+.chat {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "messages"
+        "inputbox";
+}
+
+.inputbox {
+    grid-area: inputbox;
+}
